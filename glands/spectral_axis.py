@@ -56,4 +56,4 @@ def compute_spectral_axis(table, chstart=1, chstop=-1, apply_doppler=True, verbo
     else:
         xaxis = (crv1 + cd1*(indx - crp1))*doppler
         
-    return xaxis*cunit1
+    return xaxis
