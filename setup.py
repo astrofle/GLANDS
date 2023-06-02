@@ -37,9 +37,7 @@ setup(
     install_requires = [
         'astropy>=5.2.1',
         'numpy>=1.22.0',
-        'scipy>=1.8.0',
         'matplotlib>=3.5.1',
-        'pandas',
     ],
     #url = "https://pypi.org/project/dysh/",
     #project_urls = {
