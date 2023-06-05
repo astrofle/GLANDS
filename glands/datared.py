@@ -4,28 +4,7 @@ Data reduction tools.
 
 import numpy as np
 
-from astropy.io import fits
-
 from . import spectral_axis
-
-
-def load_sdfits(filename, index=1):
-    """
-    Opens an SDFITS file and returns 
-    the data in extension `index`.
-
-    Parameters
-    ----------
-    filename : str
-        File to open.
-    index : int or str
-        Extension number or name.
-    """
-
-    hdu = fits.open(filename)
-    table = hdu[index].data
-
-    return table
 
 
 def calibrate_scan(table, scan, cal_scan=None, plnum=0):
