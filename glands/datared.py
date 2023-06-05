@@ -53,6 +53,8 @@ def calibrate_scan(table, scan, cal_scan=None, plnum=0):
     # Calibrate the data to temperature units.
     ta = (pdrift - pdrift_med)/(gtcal)*tcal
     
-    freq = spectral_axis.compute_spectral_axis(sky_table[0], apply_doppler=False)
+    #freq = spectral_axis.compute_spectral_axis(sky_table[0], apply_doppler=False)
 
-    return freq, ta
+    sky_table["DATA"] = ta
+
+    return sky_table
