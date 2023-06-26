@@ -30,6 +30,19 @@ def transform_to_radec(table, equinox="J2000"):
     return table
 
 
+def azel_to_radec(az, el, obstime, equinox="J2000", telescope="GBT"):
+    """
+    """
+
+    tel = EarthLocation.of_site("GBT")
+
+    azel = AltAz(az, el, obstime=obstime, location=tel)
+
+    radec = azel.transform_to(FK5(equinox=equinox))
+
+    return radec
+
+
 def update_table_coo(table, newcoo):
     """
     Changes the coordinate axes in the SDFITS `table` to the values defined by `newcoo`.

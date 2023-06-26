@@ -2,9 +2,13 @@
 """
 
 import numpy as np
+
+from numpy.lib import recfunctions as rfn
 from datetime import datetime
 
 import fitsio
+import pandas as pd
+
 from astropy.io import fits
 from astropy.time import Time
 
@@ -26,6 +30,17 @@ def load_sdfits(filename, index=1):
     table = hdu[index].data
 
     return table
+
+
+def table_to_DataFrame(table, dropcols=("DATA",)):
+    """
+    """
+
+    df = pd.DataFrame(rfn.drop_fields(table, dropcols))
+    df_obj = df.select_dtypes(['object'])
+    df[df_obj.columns] = df_obj.apply(lambda x: x.str.decode("utf-8").str.strip())
+
+    return df
 
 
 def make_sdfits_primary_header(date=None, telescope='NRAO_GBT', backend='VEGAS'):
